@@ -116,21 +116,21 @@ main plot comparisons since these data should best match.
 
 ### Right Side
 
-<img src="markerlessCP_files/figure-gfm/kinematics_right-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/kinematics_right-1.png" style="display: block; margin: auto;" />
 
 ### Left Side
 
-<img src="markerlessCP_files/figure-gfm/kinematics_left-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/kinematics_left-1.png" style="display: block; margin: auto;" />
 
 ## Kinetics
 
 ### Left Side
 
-<img src="markerlessCP_files/figure-gfm/kinetics_left-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/kinetics_left-1.png" style="display: block; margin: auto;" />
 
 ### Right Side
 
-<img src="markerlessCP_files/figure-gfm/kinetics_right-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/kinetics_right-1.png" style="display: block; margin: auto;" />
 
 ## IK
 
@@ -140,8 +140,8 @@ in Theia. 3DOF Hip, 3DOF knee, and 6DOF ankle.
 
 ### Right Side
 
-<img src="markerlessCP_files/figure-gfm/kinematics_IK_right-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/kinematics_IK_right-1.png" style="display: block; margin: auto;" />
 
 ### Left Side
 
-<img src="markerlessCP_files/figure-gfm/kinematics_IK_left-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/kinematics_IK_left-1.png" style="display: block; margin: auto;" />
