@@ -519,7 +519,5 @@ df %>%
 }
 ```
 
-<video class="center" width="960" height="540" controls>
-  <source src="vid/MarkerlessCP.mp4" type="video/mp4">
-</video>
+<center>![](vid/MarkerlessCP.mp4){width=75%}</center>
 

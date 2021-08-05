@@ -199,6 +199,6 @@ Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
     display: block
 }
 </style>
-<video class="center" width="960" height="540" controls>
-<source src="vid/MarkerlessCP.mp4" type="video/mp4">
-</video>
+<center>
+<video src="vid/MarkerlessCP.mp4" style="width:75.0%" controls=""><a href="vid/MarkerlessCP.mp4">Video</a></video>
+</center>
