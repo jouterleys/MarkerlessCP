@@ -8,8 +8,8 @@ Jereme Outerleys
 A participant with CP came into the HMRL on July 28, 2021. Overground
 walking gait was collected using markerless and markerbased systems.
 Markerless data were collected with 8 Sony RX0II cameras. Markerbased
-data were collected using 11 Qualisys Oqus cameras. The markerset set
-used was sufficient to build a 6DOF lower body model.
+data were collected using 11 Qualisys Oqus cameras. The markerset used
+was sufficient to build a 6DOF lower body model.
 
 The following conditions were collected
 
@@ -24,18 +24,18 @@ The following conditions were collected
 4.  **markerlessMarkers**: the participant with markers attached. The
     participant wore their own shoes (not AFOs) and a sports bra.
 5.  **markerbasedIK**: the markerbased data with an IK model to best
-    match the markerless. 3DOF hip, 3DOF knee, and 6 DOF ankle.
+    match the markerless. 3DOF hip, 3DOF knee, and 6DOF ankle.
 
 ## Collection Details
 
 Approximately 6 gait trials were collected per condition. Stomps were
-performed prior to each gait trial to syncronize motion data with force
+performed prior to each gait trial to synchronize motion data with force
 data. In the case of the **markerlessNoMarkers** and the
 **markerbased6DOF**, all gait events (heelstrike and toeoff) were best
 matched (i.e. contain all the same strides but may be shifted slightly
 due to force syncing). An 8 Hz filter was used for the markerless and a
 6 Hz butterworth was used for the markerbased. *I may try and rerun with
-better matching kinematics filters.* All analog data was processed with
+better matching kinematics filters.* All analog data were processed with
 a critically damped low pass filter with cutoff frequency of 30 Hz. *I
 only included stance phase data for now.*
 
@@ -112,7 +112,7 @@ missing <- df[missing,]
 Data are separated by side for easier visualization *and* since we don’t
 expect kinematics to be similar between sides in those with CP. I will
 only include the **markerbased6DOF** and **markerlessMarkers** for the
-main plot comparisons since these data should best match.
+main plot comparisons since these data were collected concurrently.
 
 ### Right Side
 
@@ -134,9 +134,9 @@ main plot comparisons since these data should best match.
 
 ## IK
 
-Since data from the markerbased were modeled using full 6DOF, I was
-interested in trying an IK model using Visual3D to best match the model
-in Theia. 3DOF Hip, 3DOF knee, and 6DOF ankle.
+Since data from the markerbased were originally modeled using full 6DOF,
+I was interested in trying an IK model in Visual3D to best match the
+Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
 
 ### Right Side
 
@@ -145,3 +145,25 @@ in Theia. 3DOF Hip, 3DOF knee, and 6DOF ankle.
 ### Left Side
 
 <img src="README_files/figure-gfm/kinematics_IK_left-1.png" style="display: block; margin: auto;" />
+
+## All Conditions
+
+## Kinematics
+
+### Right Side
+
+<img src="README_files/figure-gfm/kinematics_all_right-1.png" style="display: block; margin: auto;" />
+
+### Left Side
+
+<img src="README_files/figure-gfm/kinematics_all_left-1.png" style="display: block; margin: auto;" />
+
+## Kinetics
+
+### Right Side
+
+<img src="README_files/figure-gfm/kinetics_all_right-1.png" style="display: block; margin: auto;" />
+
+### Left Side
+
+<img src="README_files/figure-gfm/kinetics_all_left-1.png" style="display: block; margin: auto;" />

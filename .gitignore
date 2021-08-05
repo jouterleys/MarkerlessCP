@@ -6,5 +6,11 @@
 ## directories
 archive/
 overlayVideos/
-subjects/
 
+
+## filetypes
+*.c3d
+*.cmo
+*.cmz
+*.cmx
+*.txt

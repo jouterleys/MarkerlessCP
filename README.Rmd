@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Summary
 
-A participant with CP came into the HMRL on July 28, 2021. Overground walking gait was collected using markerless and markerbased systems. Markerless data were collected with 8 Sony RX0II cameras. Markerbased data were collected using 11 Qualisys Oqus cameras. The markerset set used was sufficient to build a 6DOF lower body model.
+A participant with CP came into the HMRL on July 28, 2021. Overground walking gait was collected using markerless and markerbased systems. Markerless data were collected with 8 Sony RX0II cameras. Markerbased data were collected using 11 Qualisys Oqus cameras. The markerset used was sufficient to build a 6DOF lower body model.
 
 The following conditions were collected
 
@@ -22,11 +22,11 @@ The following conditions were collected
 2. **markerlessAFO**: the participant wearing their AFOs (Ankle foot orthoses). Note: the AFOs are attached to a different pair of sneakers.
 3. **markerbased6DOF**: markerbased data collected concurrently with the markerlessMarkers condition. The markerset set used was sufficient to build a 6DOF lower body model.
 4. **markerlessMarkers**: the participant with markers attached. The participant wore their own shoes (not AFOs) and a sports bra.
-5. **markerbasedIK**: the markerbased data with an IK model to best match the markerless. 3DOF hip, 3DOF knee, and 6 DOF ankle.
+5. **markerbasedIK**: the markerbased data with an IK model to best match the markerless. 3DOF hip, 3DOF knee, and 6DOF ankle.
 
 ## Collection Details
 
-Approximately 6 gait trials were collected per condition. Stomps were performed prior to each gait trial to syncronize motion data with force data. In the case of the **markerlessNoMarkers** and the **markerbased6DOF**, all gait events (heelstrike and toeoff) were best matched (i.e. contain all the same strides but may be shifted slightly due to force syncing). An 8 Hz filter was used for the markerless and a 6 Hz butterworth was used for the markerbased. *I may try and rerun with better matching kinematics filters.* All analog data was processed with a critically damped low pass filter with cutoff frequency of 30 Hz. *I only included stance phase data for now.*
+Approximately 6 gait trials were collected per condition. Stomps were performed prior to each gait trial to synchronize motion data with force data. In the case of the **markerlessNoMarkers** and the **markerbased6DOF**, all gait events (heelstrike and toeoff) were best matched (i.e. contain all the same strides but may be shifted slightly due to force syncing). An 8 Hz filter was used for the markerless and a 6 Hz butterworth was used for the markerbased. *I may try and rerun with better matching kinematics filters.* All analog data were processed with a critically damped low pass filter with cutoff frequency of 30 Hz. *I only included stance phase data for now.*
 
 ## Data Processing
 
@@ -102,7 +102,7 @@ component_names <- c(
 
 ## Kinematics
 
-Data are separated by side for easier visualization *and* since we don't expect kinematics to be similar between sides in those with CP. I will only include the **markerbased6DOF** and **markerlessMarkers** for the main plot comparisons since these data should best match. 
+Data are separated by side for easier visualization *and* since we don't expect kinematics to be similar between sides in those with CP. I will only include the **markerbased6DOF** and **markerlessMarkers** for the main plot comparisons since these data were collected concurrently. 
 
 ### Right Side
 ```{r kinematics_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
@@ -271,7 +271,7 @@ df %>%
 
 ## IK
 
-Since data from the markerbased were modeled using full 6DOF, I was interested in trying an IK model using Visual3D to best match the model in Theia. 3DOF Hip, 3DOF knee, and 6DOF ankle.
+Since data from the markerbased were originally modeled using full 6DOF, I was interested in trying an IK model in Visual3D to best match the Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
 
 ### Right Side
 ```{r kinematics_IK_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
@@ -354,3 +354,176 @@ df %>%
      xlab('Percent Stance Phase (%)') +
    ylab('Joint Angle (Degrees)')
 ```
+
+
+## All Conditions
+
+## Kinematics
+
+### Right Side
+```{r kinematics_all_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #select(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  #filter(!grepl("ANGLE",signal_names))%>%
+  filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'right') %>%
+  filter(condition != 'markerlessAfo') %>%
+  #filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"),
+   legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0))+
+     xlab('Percent Stance Phase (%)') +
+   ylab('Joint Angle (Degrees)')
+```
+
+### Left Side
+```{r kinematics_all_left, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #select(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  #filter(!grepl("ANGLE",signal_names))%>%
+  filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'left') %>%
+  filter(condition != 'markerlessAfo') %>%
+  #filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"),
+   legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0))+
+     xlab('Percent Stance Phase (%)') +
+   ylab('Joint Angle (Degrees)')
+```
+
+
+## Kinetics
+
+### Right Side
+```{r kinetics_all_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #select(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  filter(!grepl("ANGLE",signal_names))%>%
+  #filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'right') %>%
+  filter(condition != 'markerlessAfo') %>%
+  #filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"),
+   legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0))+
+     xlab('Percent Stance Phase (%)') +
+   ylab('Joint Moment (Nm/kg)')
+```
+
+### Left Side
+```{r kinetics_all_left, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #select(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  filter(!grepl("ANGLE",signal_names))%>%
+  #filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'left') %>%
+  filter(condition != 'markerlessAfo') %>%
+  #filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"),
+   legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0))+
+     xlab('Percent Stance Phase (%)') +
+   ylab('Joint Moment (Nm/kg)')
+```
+
