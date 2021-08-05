@@ -511,4 +511,6 @@ df %>%
    ylab('Joint Moment (Nm/kg)')
 ```
 
-<iframe src="https://player.vimeo.com/video/583583235" frameborder="0" allowfullscreen="true"> </iframe>
+<figure class="video_container">
+  <iframe src="https://player.vimeo.com/video/583583235" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
