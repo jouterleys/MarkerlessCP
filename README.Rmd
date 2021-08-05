@@ -511,3 +511,15 @@ df %>%
    ylab('Joint Moment (Nm/kg)')
 ```
 
+```{css, echo=FALSE}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}
+```
+
+<video class="center" width="960" height="540" controls>
+  <source src="vid/MarkerlessCP.mp4" type="video/mp4">
+</video>
+
