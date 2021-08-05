@@ -54,6 +54,7 @@ library(devtools)
 library(v3dR)
 library(tidyverse)
 library(stringr)
+library(here)
 ```
 
 ### Build loopV3DR
@@ -84,7 +85,7 @@ loopV3DR <- function(full_filepath){
 
 ``` r
 # Define path to the subject folders
-resultsPath <- "C:\\Users\\Blast\\OneDrive - Queen's University\\MarkerlessCP\\subjects"
+resultsPath <- here('subjects')
 
 # Create list of subjects based on subject folders
 subList <- list.dirs(resultsPath, recursive=FALSE)
@@ -115,6 +116,29 @@ only include the **markerbased6DOF** and **markerlessMarkers** for the
 main plot comparisons since these data were collected concurrently.
 
 ### Right Side
+
+``` r
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'right') %>%
+  filter(condition != 'markerlessAfo') %>%
+  filter(condition != 'markerbasedIK') %>%
+  filter(condition != 'markerlessNoMarkers')%>%
+  ggplot(aes(x = item, y = value, group = condition, color = condition)) +
+  geom_hline(yintercept = 0, color = "black", size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(fun.data = "mean_sdl", fun.args = list(mult = 1),
+               mapping = aes(color = condition, fill = condition),
+               geom = "ribbon", alpha = 0.25, colour = NA) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"), legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0)) +
+  xlab('Percent Stance Phase (%)') +
+  ylab('Joint Angle (Degrees)')
+```
 
 <img src="README_files/figure-gfm/kinematics_right-1.png" style="display: block; margin: auto;" />
 

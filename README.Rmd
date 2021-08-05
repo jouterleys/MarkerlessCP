@@ -39,10 +39,10 @@ library(devtools)
 library(v3dR)
 library(tidyverse)
 library(stringr)
+library(here)
 ```
 
 ### Build loopV3DR
-
 ```{r loopV3DR}
 # Build a function to do something on each dataframe
 loopV3DR <- function(full_filepath){
@@ -64,10 +64,11 @@ loopV3DR <- function(full_filepath){
   
 }
 ```
+
 ### Define paths and build data frame
 ``` {r import}
 # Define path to the subject folders
-resultsPath <- "C:\\Users\\Blast\\OneDrive - Queen's University\\MarkerlessCP\\subjects"
+resultsPath <- here('subjects')
 
 # Create list of subjects based on subject folders
 subList <- list.dirs(resultsPath, recursive=FALSE)
@@ -105,44 +106,27 @@ component_names <- c(
 Data are separated by side for easier visualization *and* since we don't expect kinematics to be similar between sides in those with CP. I will only include the **markerbased6DOF** and **markerlessMarkers** for the main plot comparisons since these data were collected concurrently. 
 
 ### Right Side
-```{r kinematics_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
-
+```{r kinematics_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=TRUE}
 df %>%
   subset(select = -c(c3d_name, instance)) %>%
-  #select(signal_names,signal_types,signal_folder,signal_components,item) %>%
-  #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
-  #filter(!grepl("ANGLE",signal_names))%>%
   filter(!grepl("MOMENT", signal_names)) %>%
   filter(side == 'right') %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
-  ggplot(aes(
-    x = item,
-    y = value,
-    group = condition,
-    color = condition
-  )) +
-  geom_hline(yintercept = 0,
-             color = "black",
-             size = 0.25) +
+  ggplot(aes(x = item, y = value, group = condition, color = condition)) +
+  geom_hline(yintercept = 0, color = "black", size = 0.25) +
   stat_summary(fun = mean, geom = "line") +
-  stat_summary(
-    fun.data = "mean_sdl",
-    fun.args = list(mult = 1),
-    mapping = aes(color = condition, fill = condition),
-    geom = "ribbon",
-    alpha = 0.25,
-    colour = NA
-  ) +
+  stat_summary(fun.data = "mean_sdl", fun.args = list(mult = 1),
+               mapping = aes(color = condition, fill = condition),
+               geom = "ribbon", alpha = 0.25, colour = NA) +
   facet_wrap(signal_components ~ signal_names, scales = "free",
              labeller = labeller(signal_components = as_labeller(component_names))) +
  theme_minimal() +
- theme(axis.line = element_line(size = 1, colour = "black"),
-   legend.position = "top") +
- scale_x_continuous(expand = c(0, 0))+
-     xlab('Percent Stance Phase (%)') +
-   ylab('Joint Angle (Degrees)')
+ theme(axis.line = element_line(size = 1, colour = "black"), legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0)) +
+  xlab('Percent Stance Phase (%)') +
+  ylab('Joint Angle (Degrees)')
 ```
 
 ### Left Side
