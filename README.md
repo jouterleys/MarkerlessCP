@@ -192,4 +192,4 @@ Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
 
 <img src="README_files/figure-gfm/kinetics_all_left-1.png" style="display: block; margin: auto;" />
 
-[![name](link%20to%20image%20on%20GH)](https://player.vimeo.com/video/583583235?badge=0&autopause=0&player_id=0&app_id=58479)
+[![name](https://github.com/jouterleys/MarkerlessCP/blob/main/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&autopause=0&player_id=0&app_id=58479)

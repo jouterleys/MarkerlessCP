@@ -511,4 +511,4 @@ df %>%
    ylab('Joint Moment (Nm/kg)')
 ```
 
-[![name](link to image on GH)](https://player.vimeo.com/video/583583235?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479)
+[![name](https://github.com/jouterleys/MarkerlessCP/blob/main/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479)
