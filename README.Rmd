@@ -253,6 +253,9 @@ df %>%
    ylab('Joint Moment (Nm/kg)')
 ```
 
+#### Click Image for Video
+[![name](https://github.com/jouterleys/MarkerlessCP/blob/main/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479)
+
 ## IK
 
 Since data from the markerbased were originally modeled using full 6DOF, I was interested in trying an IK model in Visual3D to best match the Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
@@ -510,5 +513,3 @@ df %>%
      xlab('Percent Stance Phase (%)') +
    ylab('Joint Moment (Nm/kg)')
 ```
-
-[![name](https://github.com/jouterleys/MarkerlessCP/blob/main/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479)

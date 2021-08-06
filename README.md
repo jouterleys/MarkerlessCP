@@ -156,6 +156,10 @@ df %>%
 
 <img src="README_files/figure-gfm/kinetics_right-1.png" style="display: block; margin: auto;" />
 
+#### Click Image for Video
+
+[![name](https://github.com/jouterleys/MarkerlessCP/blob/main/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&autopause=0&player_id=0&app_id=58479)
+
 ## IK
 
 Since data from the markerbased were originally modeled using full 6DOF,
@@ -191,5 +195,3 @@ Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
 ### Left Side
 
 <img src="README_files/figure-gfm/kinetics_all_left-1.png" style="display: block; margin: auto;" />
-
-[![name](https://github.com/jouterleys/MarkerlessCP/blob/main/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&autopause=0&player_id=0&app_id=58479)
