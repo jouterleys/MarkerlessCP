@@ -171,7 +171,7 @@ df %>%
 ```
 
 ## Kinetics
-### Left Side
+### Right Side
 ```{r kinetics_left, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
 
 df %>%
@@ -180,7 +180,7 @@ df %>%
   #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
   filter(!grepl("ANGLE",signal_names))%>%
   #filter(!grepl("MOMENT", signal_names)) %>%
-  filter(side == 'left') %>%
+  filter(side == 'right') %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
@@ -212,7 +212,7 @@ df %>%
    ylab('Joint Moment (Nm/kg)')
 ```
 
-### Right Side
+### Left Side
 ```{r kinetics_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
 
 df %>%
@@ -221,7 +221,7 @@ df %>%
   #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
   filter(!grepl("ANGLE",signal_names))%>%
   #filter(!grepl("MOMENT", signal_names)) %>%
-  filter(side == 'right') %>%
+  filter(side == 'left') %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%

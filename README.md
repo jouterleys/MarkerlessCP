@@ -148,11 +148,11 @@ df %>%
 
 ## Kinetics
 
-### Left Side
+### Right Side
 
 <img src="README_files/figure-gfm/kinetics_left-1.png" style="display: block; margin: auto;" />
 
-### Right Side
+### Left Side
 
 <img src="README_files/figure-gfm/kinetics_right-1.png" style="display: block; margin: auto;" />
 
