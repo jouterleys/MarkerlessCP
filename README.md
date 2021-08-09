@@ -158,7 +158,7 @@ df %>%
 
 #### Click Image for Video
 
-[![name](https://github.com/jouterleys/MarkerlessCP/blob/main/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&autopause=0&player_id=0&app_id=58479)
+[![overlayVideo](https://github.com/jouterleys/MarkerlessCP/blob/main/imgs/VideoThumb.PNG?raw=true)](https://player.vimeo.com/video/583583235?badge=0&autopause=0&player_id=0&app_id=58479)
 
 ## IK
 
