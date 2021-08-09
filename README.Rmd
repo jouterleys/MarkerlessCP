@@ -513,3 +513,99 @@ df %>%
      xlab('Percent Stance Phase (%)') +
    ylab('Joint Moment (Nm/kg)')
 ```
+
+## AFOs
+
+The participant sometimes wears AFOs when walking. The following compares the pariticpant in the MarkerlessNoMarkers condition and the MarkerlessAFO condition, as these are best matched in terms of clothing with the only difference being the AFOs.
+
+```{r img_afo, echo=FALSE, fig.align = 'center', out.width = "100%", fig.cap = "Right: the participant without AOF (markerlessNoMarkers). Left: the participant with AFOs (markerlessAfo). "}
+knitr::include_graphics("imgs/img_afo.PNG")
+```
+
+Only right side data presented as there weren't sufficient clean platform contacts for left side.
+
+## Kinematics
+
+### Right Side
+```{r kinematics_afo_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #filter(!grepl("ANGLE",signal_names))%>%
+  filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'right') %>%
+  filter(condition != 'markerbased6DOF') %>%
+  #filter(condition != 'markerlessAfo') %>%
+  filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerlessMarkers')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"),
+   legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0))+
+     xlab('Percent Stance Phase (%)') +
+   ylab('Joint Angle (Degrees)')
+```
+
+
+```{r kinetics_afo_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #select(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  #group_by(signal_names,signal_types,signal_folder,signal_components,item) %>%
+  filter(!grepl("ANGLE",signal_names))%>%
+  #filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'right') %>%
+  filter(condition != 'markerbased6DOF') %>%
+  #filter(condition != 'markerlessAfo') %>%
+  filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerlessMarkers')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+  theme_minimal() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        legend.position = "top") +
+  scale_x_continuous(expand = c(0, 0))+
+  xlab('Percent Stance Phase (%)') +
+  ylab('Joint Moment (Nm/kg)')
+```

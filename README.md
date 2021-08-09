@@ -195,3 +195,31 @@ Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
 ### Left Side
 
 <img src="README_files/figure-gfm/kinetics_all_left-1.png" style="display: block; margin: auto;" />
+
+## AFOs
+
+The participant sometimes wears AFOs when walking. The following
+compares the pariticpant in the MarkerlessNoMarkers condition and the
+MarkerlessAFO condition, as these are best matched in terms of clothing
+with the only difference being the AFOs.
+
+<div class="figure" style="text-align: center">
+
+<img src="imgs/img_afo.PNG" alt="Right: the participant without AOF (markerlessNoMarkers). Left: the participant with AFOs (markerlessAfo). " width="100%" />
+<p class="caption">
+Right: the participant without AOF (markerlessNoMarkers). Left: the
+participant with AFOs (markerlessAfo).
+</p>
+
+</div>
+
+Only right side data presented as there weren’t sufficient clean
+platform contacts for left side.
+
+## Kinematics
+
+### Right Side
+
+<img src="README_files/figure-gfm/kinematics_afo_right-1.png" style="display: block; margin: auto;" />
+
+<img src="README_files/figure-gfm/kinetics_afo_right-1.png" style="display: block; margin: auto;" />
