@@ -110,10 +110,9 @@ missing <- df[missing,]
 
 ## Kinematics
 
-Data are separated by side for easier visualization *and* since we don’t
-expect kinematics to be similar between sides in those with CP. I will
-only include the **markerbased6DOF** and **markerlessMarkers** for the
-main plot comparisons since these data were collected concurrently.
+Data are separated by side for easier visualization. I will only include
+the **markerbased6DOF** and **markerlessMarkers** for the main plot
+comparisons since these data were collected concurrently.
 
 ### Right Side
 
