@@ -1,0 +1,31 @@
+! ------------------------------------------- Set the effective cutoff frequency (numerator in this expression)
+Set_Pipeline_Parameter_From_Expression
+/PARAMETER_NAME=CUTOFF
+/EXPRESSION= 8/0.802
+/AS_INTEGER=FALSE
+;
+
+! ------------------------------------------- Calculate the error variance based on the effective cutoff frequency
+Set_Pipeline_Parameter_From_Expression
+/PARAMETER_NAME=VARIANCE
+/EXPRESSION=PARAMETERS::POINT::RATE/(2*pi()*&::CUTOFF&)^4
+/AS_INTEGER=FALSE
+;
+
+! ------------------------------------------- Apply the filter
+GCVSPL
+/SIGNAL_TYPES=TARGET
+! /SIGNAL_FOLDER=ORIGINAL
+! /SIGNAL_NAMES=
+! /SIGNAL_COMPONENTS=
+/RESULT_FOLDERS=PROCESSED
+! /EVENT_SEQUENCE=
+! /EXCLUDE_EVENTS=
+! /RESULT_NAME=
+! /NUM_SPLINE_ORDER=2
+/ERROR_VARIANCE=::VARIANCE
+! /OPTIMIZATION_MODE=1
+! /DERIVATIVE_ORDER=0
+! /MAX_GAP=0
+! /FILL_GAPS=FALSE
+;

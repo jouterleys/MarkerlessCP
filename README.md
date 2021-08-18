@@ -33,11 +33,10 @@ performed prior to each gait trial to synchronize motion data with force
 data. In the case of the **markerlessNoMarkers** and the
 **markerbased6DOF**, all gait events (heelstrike and toeoff) were best
 matched (i.e. contain all the same strides but may be shifted slightly
-due to force syncing). An 8 Hz filter was used for the markerless and a
-6 Hz butterworth was used for the markerbased. *I may try and rerun with
-better matching kinematics filters.* All analog data were processed with
-a critically damped low pass filter with cutoff frequency of 30 Hz. *I
-only included stance phase data for now.*
+due to force syncing). An 8 Hz GCVSPL filter was used for both the
+markerless and markerbased kinematic data. All analog data were
+processed with a critically damped low pass filter with cutoff frequency
+of 30 Hz. *I only included stance phase data for now.*
 
 ## Data Processing
 
@@ -49,7 +48,7 @@ and functions required to reproduce this report.
 ### Attach R packages
 
 ``` r
-library(devtools)
+#library(devtools)
 #install_github("jouterleys/v3dR")
 library(v3dR)
 library(tidyverse)
