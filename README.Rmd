@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Summary
 
-A participant with CP came into the HMRL on July 28, 2021. Overground walking gait was collected using markerless and markerbased systems. Markerless data were collected with 8 Sony RX0II cameras. Markerbased data were collected using 11 Qualisys Oqus cameras. The markerset used was sufficient to build a 6DOF lower body model.
+A participant with CP came into the HMRL on July 28, 2021. Overground walking gait was collected using markerless and markerbased systems. Markerless data were collected with 8 Sony RX0II cameras with a frame rate of 120 Hz (actual 119.88 Hz). Markerbased data were collected using 11 Qualisys Oqus cameras with a frame rate of 120 Hz. The markerset used was sufficient to build a 6DOF lower body model.
 
 The following conditions were collected
 
