@@ -1,12 +1,24 @@
 MarkerlessCP
 ================
 Jereme Outerleys
-2021-07-30
+Last compiled on 2021-08-26
 
 ## Summary
 
-A participant with CP came into the HMRL on July 28, 2021. Overground
-walking gait was collected using markerless and markerbased systems.
+A participant with Cerebral Palsy (CP) came into the HMRL on July 28,
+2021. Overground walking gait was collected using markerless and
+markerbased systems. These pilot data were helpful in assesing the
+performance of a markerless system (Theia Markerless, Kingston, Ontario)
+in a population where clinical gait analyses are typically performed,
+with markerbased systems. In general, clinically important features of
+kinematic and kinetic waveforms showed clear agreement with markerbased
+data. This was particularly evident in sagittal plane kinematics and
+kinetics but also the knee adduction moment. In addition, the markerless
+system showed logical biomechanical difference in AFO vs. non-AFO gait
+trials, where reduced plantarflexion was evident in the AFO condition.
+
+## Collection Details
+
 Markerless data were collected with 8 Sony RX0II cameras with a frame
 rate of 120 Hz (actual 119.88 Hz). Markerbased data were collected using
 11 Qualisys Oqus cameras with a frame rate of 120 Hz. The markerset used
@@ -20,14 +32,12 @@ The following conditions were collected
     orthoses). Note: the AFOs are attached to a different pair of
     sneakers.
 3.  **markerbased6DOF**: markerbased data collected concurrently with
-    the markerlessMarkers condition. The markerset set used was
-    sufficient to build a 6DOF lower body model.
+    the markerlessMarkers condition. The markerset used was sufficient
+    to build a 6DOF lower body model.
 4.  **markerlessMarkers**: the participant with markers attached. The
     participant wore their own shoes (not AFOs) and a sports bra.
 5.  **markerbasedIK**: the markerbased data with an IK model to best
     match the markerless. 3DOF hip, 3DOF knee, and 6DOF ankle.
-
-## Collection Details
 
 Approximately 6 gait trials were collected per condition. Stomps were
 performed prior to each gait trial to synchronize motion data with force
@@ -99,7 +109,10 @@ df <- list.files(file.path(subList,'results'), pattern = "*.txt", full.names = T
 # The signal_names are named in visual3D as LANKLE_ANGLE, RANKLE_ANGLE, etc.
 # Since we are using long data format and assign the side during import
 # we will remove the first letter of the signal_name
-df$signal_names <- substring(df$signal_names, 2)
+df$signal_names <- as.factor(substring(df$signal_names, 2))
+
+# Get factors in a specific plotting order
+df$signal_names <- fct_relevel(df$signal_names, "ANKLE_ANGLE", "KNEE_ANGLE", "HIP_ANGLE","ANKLE_MOMENT", "KNEE_MOMENT", "HIP_MOMENT")
 
 # All data were exported normalized to stance phase.
 # Incomplete data is due to tracking errors, I want to 
@@ -139,11 +152,31 @@ df %>%
   ylab('Joint Angle (Degrees)')
 ```
 
-<img src="README_files/figure-gfm/kinematics_right-1.png" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="README_files/figure-gfm/kinematics_right-1.png" alt="Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."  />
+<p class="caption">
+Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion,
+and hip flexion are positive (+). Ankle inversion, knee adduction and
+hip adduction is positive (+). Toe-in, knee internal rotation, and hip
+internal rotation are positive (+).
+</p>
+
+</div>
 
 ### Left Side
 
-<img src="README_files/figure-gfm/kinematics_left-1.png" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="README_files/figure-gfm/kinematics_left-1.png" alt="Left lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."  />
+<p class="caption">
+Left lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and
+hip flexion are positive (+). Ankle inversion, knee adduction and hip
+adduction is positive (+). Toe-in, knee internal rotation, and hip
+internal rotation are positive (+).
+</p>
+
+</div>
 
 ## Kinetics
 
@@ -163,7 +196,7 @@ df %>%
 
 Since data from the markerbased were originally modeled using full 6DOF,
 I was interested in trying an IK model in Visual3D to best match the
-Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle.
+Theia IK. 3DOF Hip, 3DOF knee, and 6DOF ankle (“Free Feet”).
 
 ### Right Side
 
@@ -219,6 +252,16 @@ platform contacts for left side.
 
 ### Right Side
 
-<img src="README_files/figure-gfm/kinematics_afo_right-1.png" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="README_files/figure-gfm/kinematics_afo_right-1.png" alt="Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."  />
+<p class="caption">
+Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion,
+and hip flexion are positive (+). Ankle inversion, knee adduction and
+hip adduction is positive (+). Toe-in, knee internal rotation, and hip
+internal rotation are positive (+).
+</p>
+
+</div>
 
 <img src="README_files/figure-gfm/kinetics_afo_right-1.png" style="display: block; margin: auto;" />
