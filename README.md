@@ -272,12 +272,12 @@ platform contacts for left side.
 
 ## Virtual Hip
 
-There was a question during ISBS what Pevlis model was used in Kanko et
+There was a question during ISBS what Pelvis model was used in Kanko et
 al. The data was reran with the originally used Visual3D Composite
-pelvis which is an implementation of a CODA Pelvis in v3d and also a
-“virtual” pevlis that is normalised to reduce the forward tilt seen when
-using the CODA Pelvis. The virtual pelvis was created as described in
-[here on the V3d
+Pelvis, which is an implementation of a CODA Pelvis in Visual3D, and
+also with a “virtual pelvis” that is normalised to reduce the forward
+tilt seen when using the CODA Pelvis. The virtual pelvis was created as
+described [here on the V3d
 Wiki](https://www.c-motion.com/v3dwiki/index.php?title=Segment_Examples_5).
 
 ### Right Side
