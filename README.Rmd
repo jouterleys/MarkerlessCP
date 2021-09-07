@@ -120,6 +120,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(x = item, y = value, group = condition, color = condition)) +
   geom_hline(yintercept = 0, color = "black", size = 0.25) +
   stat_summary(fun = mean, geom = "line") +
@@ -148,6 +149,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -190,6 +192,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -231,6 +234,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -279,6 +283,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   #filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -320,6 +325,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   #filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -366,6 +372,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   #filter(condition != 'markerbasedIK') %>%
   #filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -407,6 +414,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   #filter(condition != 'markerbasedIK') %>%
   #filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -451,6 +459,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   #filter(condition != 'markerbasedIK') %>%
   #filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -492,6 +501,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   #filter(condition != 'markerbasedIK') %>%
   #filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -545,6 +555,7 @@ df %>%
   filter(condition != 'markerbasedIK') %>%
   #filter(condition != 'markerlessNoMarkers')%>%
   filter(condition != 'markerlessMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -588,6 +599,7 @@ df %>%
   filter(condition != 'markerbasedIK') %>%
   #filter(condition != 'markerlessNoMarkers')%>%
   filter(condition != 'markerlessMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(
     x = item,
     y = value,
@@ -614,4 +626,92 @@ df %>%
   scale_x_continuous(expand = c(0, 0))+
   xlab('Percent Stance Phase (%)') +
   ylab('Joint Moment (Nm/kg)')
+```
+
+Only right side data presented as there weren't sufficient clean platform contacts for left side.
+
+## Virtual Hip
+There was a question during ISBS what Pevlis model was used in Kanko et al. The data was reran with the originally used Visual3D Composite pelvis which is an implementation of a CODA Pelvis in v3d and also a "virtual" pevlis that is normalised to reduce the forward tilt seen when using the CODA Pelvis. The virtual pelvis was created as described in [here on the V3d Wiki](https://www.c-motion.com/v3dwiki/index.php?title=Segment_Examples_5).
+
+### Right Side
+```{r kinematics_VH_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE, fig.cap = "Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #filter(!grepl("ANGLE",signal_names))%>%
+  filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'right') %>%
+  #filter(condition != 'markerbased6DOF') %>%
+  filter(condition != 'markerlessAfo') %>%
+  filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  #filter(condition != 'markerlessMarkers')%>%
+  #filter(condition != 'markerbased6DOF_VH')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"),
+   legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0))+
+     xlab('Percent Stance Phase (%)') +
+   ylab('Joint Angle (Degrees)')
+```
+
+```{r kinematics_VH_left, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE, fig.cap = "Left lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."}
+
+df %>%
+  subset(select = -c(c3d_name, instance)) %>%
+  #filter(!grepl("ANGLE",signal_names))%>%
+  filter(!grepl("MOMENT", signal_names)) %>%
+  filter(side == 'left') %>%
+  #filter(condition != 'markerbased6DOF') %>%
+  filter(condition != 'markerlessAfo') %>%
+  filter(condition != 'markerbasedIK') %>%
+  #filter(condition != 'markerlessNoMarkers')%>%
+  #filter(condition != 'markerlessMarkers')%>%
+  #filter(condition != 'markerbased6DOF_VH')%>%
+  ggplot(aes(
+    x = item,
+    y = value,
+    group = condition,
+    color = condition
+  )) +
+  geom_hline(yintercept = 0,
+             color = "black",
+             size = 0.25) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(
+    fun.data = "mean_sdl",
+    fun.args = list(mult = 1),
+    mapping = aes(color = condition, fill = condition),
+    geom = "ribbon",
+    alpha = 0.25,
+    colour = NA
+  ) +
+  facet_wrap(signal_components ~ signal_names, scales = "free",
+             labeller = labeller(signal_components = as_labeller(component_names))) +
+ theme_minimal() +
+ theme(axis.line = element_line(size = 1, colour = "black"),
+   legend.position = "top") +
+ scale_x_continuous(expand = c(0, 0))+
+     xlab('Percent Stance Phase (%)') +
+   ylab('Joint Angle (Degrees)')
 ```

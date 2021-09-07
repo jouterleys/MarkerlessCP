@@ -1,7 +1,7 @@
 MarkerlessCP
 ================
 Jereme Outerleys
-Last compiled on 2021-08-26
+Last compiled on 2021-09-07
 
 ## Summary
 
@@ -137,6 +137,7 @@ df %>%
   filter(condition != 'markerlessAfo') %>%
   filter(condition != 'markerbasedIK') %>%
   filter(condition != 'markerlessNoMarkers')%>%
+  filter(condition != 'markerbased6DOF_VH')%>%
   ggplot(aes(x = item, y = value, group = condition, color = condition)) +
   geom_hline(yintercept = 0, color = "black", size = 0.25) +
   stat_summary(fun = mean, geom = "line") +
@@ -265,3 +266,42 @@ internal rotation are positive (+).
 </div>
 
 <img src="README_files/figure-gfm/kinetics_afo_right-1.png" style="display: block; margin: auto;" />
+
+Only right side data presented as there weren’t sufficient clean
+platform contacts for left side.
+
+## Virtual Hip
+
+There was a question during ISBS what Pevlis model was used in Kanko et
+al. The data was reran with the originally used Visual3D Composite
+pelvis which is an implementation of a CODA Pelvis in v3d and also a
+“virtual” pevlis that is normalised to reduce the forward tilt seen when
+using the CODA Pelvis. The virtual pelvis was created as described in
+[here on the V3d
+Wiki](https://www.c-motion.com/v3dwiki/index.php?title=Segment_Examples_5).
+
+### Right Side
+
+<div class="figure" style="text-align: center">
+
+<img src="README_files/figure-gfm/kinematics_VH_right-1.png" alt="Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."  />
+<p class="caption">
+Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion,
+and hip flexion are positive (+). Ankle inversion, knee adduction and
+hip adduction is positive (+). Toe-in, knee internal rotation, and hip
+internal rotation are positive (+).
+</p>
+
+</div>
+
+<div class="figure" style="text-align: center">
+
+<img src="README_files/figure-gfm/kinematics_VH_left-1.png" alt="Left lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."  />
+<p class="caption">
+Left lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and
+hip flexion are positive (+). Ankle inversion, knee adduction and hip
+adduction is positive (+). Toe-in, knee internal rotation, and hip
+internal rotation are positive (+).
+</p>
+
+</div>
