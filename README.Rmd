@@ -2,7 +2,7 @@
 title: "MarkerlessCP"
 author: "Jereme Outerleys"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
-
+bibliography: references.bib
 output:
   github_document: 
   fig_width: 9
@@ -10,7 +10,14 @@ output:
 ---
 
 ```{r setup, include=FALSE}
+library(knitr)
+library(rmarkdown)
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+htmltools::img(src = knitr::include_graphics("imgs/QBanner.PNG"))
+
 ```
 
 ## Summary
@@ -628,10 +635,8 @@ df %>%
   ylab('Joint Moment (Nm/kg)')
 ```
 
-Only right side data presented as there weren't sufficient clean platform contacts for left side.
-
 ## Virtual Hip
-There was a question during ISBS what Pelvis model was used in Kanko et al. The data was reran with the originally used Visual3D Composite Pelvis, which is an implementation of a CODA Pelvis in Visual3D, and also with a "virtual pelvis" that is normalised to reduce the forward tilt seen when using the CODA Pelvis. The virtual pelvis was created as described [here on the V3d Wiki](https://www.c-motion.com/v3dwiki/index.php?title=Segment_Examples_5).
+There was a question during ISBS as to what Pelvis model was used in @KANKO2021110665; @KANKO2021110422; @KANKO2021110414. The data was reran with the originally used Visual3D Composite Pelvis, which is an implementation of a CODA Pelvis in Visual3D, and also with a "virtual pelvis" that is normalised to reduce the forward tilt seen when using the CODA Pelvis. The virtual pelvis was created as described [here on the V3d Wiki](https://www.c-motion.com/v3dwiki/index.php?title=Segment_Examples_5).
 
 ### Right Side
 ```{r kinematics_VH_right, fig.height = 8, fig.width = 9, fig.align = "center", dpi=300, echo=FALSE, fig.cap = "Right lower-limb joint kinematics. Note: Dorsi-flexion, knee flexion, and hip flexion are positive (+). Ankle inversion, knee adduction and hip adduction is positive (+). Toe-in, knee internal rotation, and hip internal rotation are positive (+)."}
@@ -715,3 +720,5 @@ df %>%
      xlab('Percent Stance Phase (%)') +
    ylab('Joint Angle (Degrees)')
 ```
+
+## References

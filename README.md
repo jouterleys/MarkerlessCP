@@ -1,7 +1,11 @@
 MarkerlessCP
 ================
 Jereme Outerleys
-Last compiled on 2021-09-07
+Last compiled on 2021-09-16
+
+<!--html_preserve-->
+
+<img src="imgs/QBanner.PNG"/><!--/html_preserve-->
 
 ## Summary
 
@@ -267,17 +271,16 @@ internal rotation are positive (+).
 
 <img src="README_files/figure-gfm/kinetics_afo_right-1.png" style="display: block; margin: auto;" />
 
-Only right side data presented as there weren’t sufficient clean
-platform contacts for left side.
-
 ## Virtual Hip
 
-There was a question during ISBS what Pelvis model was used in Kanko et
-al. The data was reran with the originally used Visual3D Composite
-Pelvis, which is an implementation of a CODA Pelvis in Visual3D, and
-also with a “virtual pelvis” that is normalised to reduce the forward
-tilt seen when using the CODA Pelvis. The virtual pelvis was created as
-described [here on the V3d
+There was a question during ISBS as to what Pelvis model was used in
+Kanko, Laende, Davis, et al. (2021); Kanko, Laende, Selbie, et al.
+(2021); Kanko, Laende, Strutzenberger, et al. (2021). The data was reran
+with the originally used Visual3D Composite Pelvis, which is an
+implementation of a CODA Pelvis in Visual3D, and also with a “virtual
+pelvis” that is normalised to reduce the forward tilt seen when using
+the CODA Pelvis. The virtual pelvis was created as described [here on
+the V3d
 Wiki](https://www.c-motion.com/v3dwiki/index.php?title=Segment_Examples_5).
 
 ### Right Side
@@ -303,5 +306,41 @@ hip flexion are positive (+). Ankle inversion, knee adduction and hip
 adduction is positive (+). Toe-in, knee internal rotation, and hip
 internal rotation are positive (+).
 </p>
+
+</div>
+
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-KANKO2021110665" class="csl-entry">
+
+Kanko, Robert M., Elise K. Laende, Elysia M. Davis, W. Scott Selbie, and
+Kevin J. Deluzio. 2021. “Concurrent Assessment of Gait Kinematics Using
+Marker-Based and Markerless Motion Capture.” *Journal of Biomechanics*
+127: 110665.
+https://doi.org/<https://doi.org/10.1016/j.jbiomech.2021.110665>.
+
+</div>
+
+<div id="ref-KANKO2021110414" class="csl-entry">
+
+Kanko, Robert M., Elise K. Laende, Gerda Strutzenberger, Marcus Brown,
+W. Scott Selbie, Vincent DePaul, Stephen H. Scott, and Kevin J. Deluzio.
+2021. “Assessment of Spatiotemporal Gait Parameters Using a Deep
+Learning Algorithm-Based Markerless Motion Capture System.” *Journal of
+Biomechanics* 122: 110414.
+https://doi.org/<https://doi.org/10.1016/j.jbiomech.2021.110414>.
+
+</div>
+
+<div id="ref-KANKO2021110422" class="csl-entry">
+
+Kanko, Robert M., Elise Laende, W. Scott Selbie, and Kevin J. Deluzio.
+2021. “Inter-Session Repeatability of Markerless Motion Capture Gait
+Kinematics.” *Journal of Biomechanics* 121: 110422.
+https://doi.org/<https://doi.org/10.1016/j.jbiomech.2021.110422>.
+
+</div>
 
 </div>
